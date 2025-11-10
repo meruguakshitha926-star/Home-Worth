@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bharat Home Value AI - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand-inline">
+            <img class="brand-logo small" alt="Bharat Home Value AI" src="https://img.icons8.com/external-outline-juicy-fish/40/1E40AF/external-home-real-estate-outline-outline-juicy-fish.png">
+            <h2>Bharat Home Value AI</h2>
+        </div>
+        <div class="topbar-actions">
+            <span id="greeting" class="muted"></span>
+            <button id="logoutBtn" class="btn">Logout</button>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section class="panel">
+            <h3>Select Location</h3>
+            <div class="grid grid-2">
+                <div class="field">
+                    <label for="state">State</label>
+                    <select id="state"></select>
+                </div>
+                <div class="field">
+                    <label for="district">District</label>
+                    <select id="district"></select>
+                </div>
+                <div class="field">
+                    <label for="city">Mandal</label>
+                    <select id="city"></select>
+                </div>
+                <div class="field">
+                    <label for="village">Village</label>
+                    <select id="village"></select>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h3>Property Details</h3>
+            <div class="grid grid-3">
+                <div class="field">
+                    <label for="area">Area (sqft)</label>
+                    <input id="area" type="number" min="100" step="10" value="1000">
+                </div>
+                <div class="field">
+                    <label for="bhk">BHK</label>
+                    <input id="bhk" type="number" min="1" max="6" value="2">
+                </div>
+                <div class="field">
+                    <label for="bathroom">Bathrooms</label>
+                    <input id="bathroom" type="number" min="1" max="6" value="2">
+                </div>
+                <div class="field">
+                    <label for="parking">Parking</label>
+                    <select id="parking">
+                        <option value="0">None</option>
+                        <option value="1">1 slot</option>
+                        <option value="2">2+ slots</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="furnishing">Furnishing</label>
+                    <select id="furnishing">
+                        <option value="0">Unfurnished</option>
+                        <option value="1">Semi-furnished</option>
+                        <option value="2">Fully furnished</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="age">Property Age (years)</label>
+                    <input id="age" type="number" min="0" max="50" value="5">
+                </div>
+            </div>
+            <button id="predictBtn" class="btn primary">Predict Price</button>
+        </section>
+
+        <section class="panel">
+            <h3>Prediction</h3>
+            <div id="prediction" class="prediction">
+                <div class="prediction-left">
+                    <div class="prediction-price">
+                        <div class="price-value" id="priceValue">—</div>
+                        <div class="price-sub" id="priceCategory">—</div>
+                    </div>
+                    <div class="location-line" id="selectedLocation">Select a location and predict</div>
+                </div>
+                <img id="regionImage" class="region-image" alt="Region" src="" hidden>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h3>Map</h3>
+            <div id="map" class="map"></div>
+        </section>
+    </main>
+
+    <div id="chatbot" class="chatbot">
+        <div class="chat-header">Assistant</div>
+        <div id="chatBody" class="chat-body"></div>
+        <div class="chat-input-row">
+            <input id="chatInput" type="text" placeholder="Ask about pricing...">
+            <button id="chatSend" class="btn">Send</button>
+        </div>
+    </div>
+    <button id="chatToggle" class="chat-toggle">💬</button>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/data.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
+
+
